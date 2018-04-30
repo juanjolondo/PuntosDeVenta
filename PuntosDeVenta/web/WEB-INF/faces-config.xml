@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <managed-bean>
+        <managed-bean-name>agenteMBean</managed-bean-name>
+        <managed-bean-class>com.aerolinea.controlador.AgenteMBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>socioMBean</managed-bean-name>
+        <managed-bean-class>com.aerolinea.controlador.SocioMBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>pasajeMBean</managed-bean-name>
+        <managed-bean-class>com.aerolinea.controlador.PasajeMBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+</faces-config>
