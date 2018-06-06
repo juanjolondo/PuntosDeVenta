@@ -7,9 +7,11 @@ package com.aerolinea.persitencia.DAO;
 
 import com.aerolinea.persistencia.entidades.Socio;
 import com.aerolinea.persistencia.entidades.SocioPK;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -57,6 +59,12 @@ public class SocioFacade extends AbstractFacade<Socio> implements SocioFacadeLoc
     public boolean newSocio(Socio socio) {
         em.persist(socio);
         return checkSocio(socio.getSocioPK().getTipoId(), socio.getSocioPK().getId());
+    }
+
+    @Override
+    public List<Socio> getAllSocios() {
+        Query q = em.createNamedQuery("Socio.findAll");
+        return q.getResultList();
     }
     
 }

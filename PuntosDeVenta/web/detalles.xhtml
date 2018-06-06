@@ -36,7 +36,7 @@
                     </p:inputText>
                     
                     <p:outputLabel value="Categoria:" for="categoria" />
-                    <p:inputText id="categoria" value="#{socioMBean.socio.categoria}" title="Categoria" required="true" requiredMessage="The Categoria field is required.">
+                    <p:inputText id="categoria" value="#{socioMBean.socio.categoria.toString}" title="Categoria" required="true" requiredMessage="The Categoria field is required.">
                         <f:convertNumber type="number" maxIntegerDigits="5" maxFractionDigits="0"/>
                     </p:inputText>
                     

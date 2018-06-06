@@ -32,10 +32,14 @@ public interface PasajeFacadeLocal {
 
     Pasaje getPasaje(String codigoPasaje);
 
-    Pasaje asignarSilla(Pasaje pasaje);
+    String asignarSilla(Pasaje pasaje);
 
     boolean newPasaje(Pasaje pasaje);
 
-    Pasaje autorizarTarjeta(Pasaje pasaje);
+    boolean autorizarTarjeta(String numeroTarjeta, int precio);
+
+    List<Pasaje> getAllPasajes();
+
+    Pasaje updatePasaje(Pasaje pasaje);
     
 }

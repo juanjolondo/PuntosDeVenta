@@ -21,6 +21,9 @@
                     <p:outputLabel value="MedioPago:" for="medioPago" />
                     <p:inputText id="medioPago" value="#{pasajeMBean.pasaje.medioPago}" title="MedioPago" required="true" requiredMessage="The MedioPago field is required."/>
                     
+                    <p:outputLabel value="Número de Tarjeta:" for="numeroTarjeta" />
+                    <p:inputText id="numeroTarjeta" placeholder="Si va a pagar a crédito por favor ingrese el número de tarjeta" title="NumeroTarjeta" required="false"/>
+                    
                     <p:outputLabel value="Fecha:" for="fecha" />
                     <p:inputText id="fecha" value="#{pasajeMBean.pasaje.fecha}" title="Fecha" required="true" requiredMessage="The Fecha field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -40,7 +43,7 @@
 
                 </p:panelGrid>
                 
-                <p:commandButton id="ingresar" value="Enviar" action="#{pasajeMBean.comprarPasaje(codigoPasaje,medioPago,fecha,silla,codigoViaje,tipoIdSocio,idSocio,agenteMBean.agente)}"/>
+                <p:commandButton id="ingresar" value="Enviar" action="#{pasajeMBean.comprarPasaje(codigoPasaje,medioPago,fecha,silla,codigoViaje,tipoIdSocio,idSocio,agenteMBean.agente,numeroTarjeta)}"/>
                 <p:commandButton id="atras" value="Atrás" action="inicio"/>
                 
             </h:form>

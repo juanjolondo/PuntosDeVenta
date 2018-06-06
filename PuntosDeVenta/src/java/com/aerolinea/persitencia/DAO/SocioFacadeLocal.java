@@ -39,5 +39,7 @@ public interface SocioFacadeLocal {
     boolean deleteSocio(String tipoId, String id);
 
     boolean newSocio(Socio socio);
+
+    List<Socio> getAllSocios();
     
 }

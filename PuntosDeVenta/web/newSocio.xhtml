@@ -30,11 +30,6 @@
                     <p:outputLabel value="Telefono:" for="telefono" />
                     <p:inputText id="telefono" value="#{socioMBean.socio.telefono}" title="Telefono" />
                     
-                    <p:outputLabel value="Millas:" for="millas" />
-                    <p:inputText id="millas" value="#{socioMBean.socio.millas}" title="Millas" required="true" requiredMessage="The Millas field is required.">
-                        <f:convertNumber type="number" maxIntegerDigits="5" maxFractionDigits="0"/>
-                    </p:inputText>
-                    
                     <p:outputLabel value="Categoria:" for="categoria" />
                     <p:inputText id="categoria" value="#{socioMBean.socio.categoria}" title="Categoria" required="true" requiredMessage="The Categoria field is required.">
                         <f:convertNumber type="number" maxIntegerDigits="5" maxFractionDigits="0"/>
@@ -42,7 +37,7 @@
                     
                 </p:panelGrid>
                 
-                <p:commandButton id="ingresar" value="Ingresar" action="#{socioMBean.newSocio(tipoId, id, nombres, apellidos, telefono, categoria, millas)}"/>
+                <p:commandButton id="ingresar" value="Ingresar" action="#{socioMBean.newSocio(tipoId, id, nombres, apellidos, telefono, categoria, 0)}"/>
                 <p:commandButton id="atras" value="Atrás" action="#{socioMBean.atras()}"/>
                 
             </h:form>
