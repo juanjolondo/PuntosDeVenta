@@ -6,6 +6,8 @@
 package com.aerolinea.persitencia.DAO;
 
 import com.aerolinea.persistencia.entidades.Computador;
+import com.aerolinea.persistencia.entidades.Pasaje;
+import com.aerolinea.persistencia.entidades.Socio;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -33,5 +35,7 @@ public interface ComputadorFacadeLocal {
     Computador getComputador(String codigoOficina, String codigoPc);
 
     List<Computador> getAllComputadores();
+
+    void sincronizarInfo(List<Socio> socios, List<Pasaje> pasajes);
     
 }

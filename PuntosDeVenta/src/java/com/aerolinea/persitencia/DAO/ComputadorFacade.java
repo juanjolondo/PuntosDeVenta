@@ -7,7 +7,10 @@ package com.aerolinea.persitencia.DAO;
 
 import com.aerolinea.persistencia.entidades.Computador;
 import com.aerolinea.persistencia.entidades.ComputadorPK;
+import com.aerolinea.persistencia.entidades.Pasaje;
+import com.aerolinea.persistencia.entidades.Socio;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,6 +22,12 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ComputadorFacade extends AbstractFacade<Computador> implements ComputadorFacadeLocal {
+
+    @EJB
+    private PasajeFacadeLocal pasajeFacade;
+
+    @EJB
+    private SocioFacadeLocal socioFacade;
 
     @PersistenceContext(unitName = "PuntosDeVentaPU")
     private EntityManager em;
@@ -42,6 +51,17 @@ public class ComputadorFacade extends AbstractFacade<Computador> implements Comp
     public List<Computador> getAllComputadores() {
         Query q = em.createNamedQuery("Computador.findAll");
         return q.getResultList();
+    }
+
+    @Override
+    public void sincronizarInfo(List<Socio> socios, List<Pasaje> pasajes) {
+        socios.forEach((s) -> {
+            socioFacade.updateSocio(s);
+        });
+        
+        pasajes.forEach((p) -> {
+            pasajeFacade.updatePasaje(p);
+        });
     }
     
 }
