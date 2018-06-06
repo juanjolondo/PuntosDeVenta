@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/06/2018 01:35:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistema.financiero.persistencia.Cliente" table="cliente" catalog="sistemafinanciero" optimistic-lock="version">
+        <composite-id name="id" class="com.sistema.financiero.persistencia.ClienteId">
+            <key-property name="tipoId" type="string">
+                <column name="TIPO_ID" length="20" />
+            </key-property>
+            <key-property name="id" type="string">
+                <column name="ID" length="20" />
+            </key-property>
+        </composite-id>
+        <property name="nombres" type="string">
+            <column name="NOMBRES" length="50" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="APELLIDOS" length="50" not-null="true" />
+        </property>
+        <set name="tarjetas" table="tarjeta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TIPO_ID" length="20" not-null="true" />
+                <column name="ID" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.sistema.financiero.persistencia.Tarjeta" />
+        </set>
+    </class>
+</hibernate-mapping>

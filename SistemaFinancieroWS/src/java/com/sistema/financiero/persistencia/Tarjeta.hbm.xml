@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/06/2018 01:35:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistema.financiero.persistencia.Tarjeta" table="tarjeta" catalog="sistemafinanciero" optimistic-lock="version">
+        <id name="numeroTarjeta" type="string">
+            <column name="NUMERO_TARJETA" length="20" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="com.sistema.financiero.persistencia.Cliente" fetch="select">
+            <column name="TIPO_ID" length="20" not-null="true" />
+            <column name="ID" length="20" not-null="true" />
+        </many-to-one>
+        <property name="cupo" type="int">
+            <column name="CUPO" not-null="true" />
+        </property>
+        <set name="compras" table="compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMERO_TARJETA" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.sistema.financiero.persistencia.Compra" />
+        </set>
+    </class>
+</hibernate-mapping>

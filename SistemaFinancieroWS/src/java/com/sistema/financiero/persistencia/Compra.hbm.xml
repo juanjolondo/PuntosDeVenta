@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/06/2018 01:35:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistema.financiero.persistencia.Compra" table="compra" catalog="sistemafinanciero" optimistic-lock="version">
+        <composite-id name="id" class="com.sistema.financiero.persistencia.CompraId">
+            <key-property name="numeroTarjeta" type="string">
+                <column name="NUMERO_TARJETA" length="20" />
+            </key-property>
+            <key-property name="fecha" type="timestamp">
+                <column name="FECHA" length="19" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tarjeta" class="com.sistema.financiero.persistencia.Tarjeta" update="false" insert="false" fetch="select">
+            <column name="NUMERO_TARJETA" length="20" not-null="true" />
+        </many-to-one>
+        <property name="compra" type="string">
+            <column name="COMPRA" length="200" not-null="true" />
+        </property>
+        <property name="precioCompra" type="int">
+            <column name="PRECIO_COMPRA" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

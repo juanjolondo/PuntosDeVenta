@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://service.financiero.sistema.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.financiero.sistema.com/">
+
+<xs:element name="autorizarTarjeta" type="tns:autorizarTarjeta"/>
+
+<xs:element name="autorizarTarjetaResponse" type="tns:autorizarTarjetaResponse"/>
+
+<xs:complexType name="tarjeta">
+<xs:sequence>
+<xs:element name="cliente" type="tns:cliente" minOccurs="0"/>
+<xs:element name="compras" type="tns:compra" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cupo" type="xs:int"/>
+<xs:element name="numeroTarjeta" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cliente">
+<xs:sequence>
+<xs:element name="apellidos" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="tns:clienteId" minOccurs="0"/>
+<xs:element name="nombres" type="xs:string" minOccurs="0"/>
+<xs:element name="tarjetas" type="tns:tarjeta" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="clienteId">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoId" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compra">
+<xs:sequence>
+<xs:element name="compra" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="tns:compraId" minOccurs="0"/>
+<xs:element name="precioCompra" type="xs:int"/>
+<xs:element name="tarjeta" type="tns:tarjeta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compraId">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="numeroTarjeta" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="autorizarTarjeta">
+<xs:sequence>
+<xs:element name="numeroTarjeta" type="xs:string" minOccurs="0"/>
+<xs:element name="precio" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="autorizarTarjetaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
